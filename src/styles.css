@@ -1,5 +1,15 @@
 body {
-    background-image: linear-gradient(to right, black, grey, black);
-    background-size: cover;
-    background-repeat: no-repeat;
+  font-family: 'Changa', sans-serif;
+
+
+    background: 
+      repeating-radial-gradient(#000 0 0.0001%,#272727 0 0.0002%) 50% 0/2500px 2500px,
+      repeating-conic-gradient(#000 0 0.0001%,#272727 0 0.0002%) 60% 60%/2500px 2500px;
+    background-blend-mode: difference;
+    animation: b .2s infinite alternate;
+}
+  @keyframes b{
+    100% {background-position: 50% 0, 60% 50%}
   }
+
+

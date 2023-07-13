@@ -7,5 +7,85 @@
   }
 
   h1{
-    font-family: 'Harajuku', harajuku-script;
+    font-family: 'Hanalei', cursive;
+    font-size: 10em;
+    color: whitesmoke;
+    letter-spacing: 1rem;
   }
+
+ 
+ 
+ .animated-shadow {
+  
+   height: 140px;
+   left: 0;
+   letter-spacing: 5px;
+   text-align: center;
+   text-transform: uppercase;
+   width: 100%;
+   animation: move linear 2000ms infinite;
+   z-index: 2
+ }
+ /*Animación para rotar las sombras*/
+ @keyframes move {
+   0% {
+     text-shadow:
+       4px -4px 0 #060606,
+       3px -3px 0 #060606,
+       2px -2px 0 #060606,
+       1px -1px 0 #060606,
+       -4px 4px 0 #3b3b3b,
+       -3px 3px 0 #3b3b3b,
+       -2px 2px 0 #3b3b3b,
+       -1px 1px 0 #3b3b3b
+     ;
+   }
+   25% {
+     text-shadow:
+       -4px -4px 0 #3b3b3b,
+       -3px -3px 0 #3b3b3b,
+       -2px -2px 0 #3b3b3b,
+       -1px -1px 0 #3b3b3b,
+       4px 4px 0 #060606,
+       3px 3px 0 #060606,
+       2px 2px 0 #060606,
+       1px 1px 0 #060606
+     ;
+   }
+   50% {
+     text-shadow:
+       -4px 4px 0 #060606,
+       -3px 3px 0 #060606,
+       -2px 2px 0 #060606,
+       -1px 1px 0 #060606,
+       4px -4px 0 #3b3b3b,
+       3px -3px 0 #3b3b3b,
+       2px -2px 0 #3b3b3b,
+       1px -1px 0 #3b3b3b
+     ;
+   }
+   75% {
+     text-shadow:
+       4px 4px 0 #3b3b3b,
+       3px 3px 0 #3b3b3b,
+       2px 2px 0 #3b3b3b,
+       1px 1px 0 #3b3b3b,
+       -4px -4px 0 #060606,
+       -3px -3px 0 #060606,
+       -2px -2px 0 #060606,
+       -1px -1px 0 #060606
+     ;
+   }
+   100% {
+     text-shadow:
+       4px -4px 0 #060606,
+       3px -3px 0 #060606,
+       2px -2px 0 #060606,
+       1px -1px 0 #060606,
+       -4px 4px 0 #3b3b3b,
+       -3px 3px 0 #3b3b3b,
+       -2px 2px 0 #3b3b3b,
+       -1px 1px 0 #3b3b3b
+     ;
+   }
+ }
