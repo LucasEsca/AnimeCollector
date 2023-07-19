@@ -10,6 +10,11 @@ import { AuthFormComponent } from './shared/auth-form/auth-form.component';
 import { InfoAnimeComponent } from './shared/info-anime/info-anime.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { Err404Component } from './pages/err404/err404.component';
+import { LogoComponent } from './shared/logo/logo.component';
+import { EditComponent } from './pages/Profile/edit/edit.component';
+import { LikedComponent } from './pages/Profile/liked/liked.component';
+import { SeeLaterComponent } from './pages/Profile/see-later/see-later.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,12 @@ import { Err404Component } from './pages/err404/err404.component';
     AuthFormComponent,
     InfoAnimeComponent,
     NavBarComponent,
-    Err404Component
+    Err404Component,
+    LogoComponent,
+    EditComponent,
+    LikedComponent,
+    SeeLaterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
