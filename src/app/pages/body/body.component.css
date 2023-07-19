@@ -90,7 +90,7 @@ animation: b .2s infinite alternate;
     font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
-    font-family: 'Roboto Black', sans-serif;
+    
     letter-spacing: 1px;
     color: whitesmoke;
   }

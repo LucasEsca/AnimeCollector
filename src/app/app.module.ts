@@ -15,6 +15,9 @@ import { EditComponent } from './pages/Profile/edit/edit.component';
 import { LikedComponent } from './pages/Profile/liked/liked.component';
 import { SeeLaterComponent } from './pages/Profile/see-later/see-later.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ErrorMessageComponent } from './shared/error-message/error-message.component';
+import { SignInComponent } from './pages/SignIn/SignUp/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/SignIn/SignUp/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,6 @@ import { HomeComponent } from './pages/home/home.component';
     HeaderComponent,
     FooterComponent,
     BodyComponent,
-    AuthFormComponent,
     InfoAnimeComponent,
     NavBarComponent,
     Err404Component,
@@ -30,11 +32,16 @@ import { HomeComponent } from './pages/home/home.component';
     EditComponent,
     LikedComponent,
     SeeLaterComponent,
-    HomeComponent
+    HomeComponent,
+    SignInComponent,
+    SignUpComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthFormComponent,
+    ErrorMessageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
