@@ -1,46 +1,63 @@
-<section class="bg-gray-50 dark:bg-gray-900">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <div
-        class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-            {{title}}
-          </h1>
-          <form class="space-y-4 md:space-y-6" [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div>
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-              <input type="email" name="email" id="email" formControlName="email" [ngClass]="{'invalid': hasError('email')}"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="name@company.com" required="">
-                <!-- Show error message -->
-                <app-error-message [control]="form.get('email')!" />
-            </div>
-            <div>
-              <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-              <input type="password" name="password" id="password" formControlName="password"  [ngClass]="{'invalid': hasError('password')}" placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required="">
-                <app-error-message [control]="form.get('password')!" />
-            </div>
-            <button type="submit" class="w-full py-3 rounded-lg bg-sky-500 hover:bg-sky-700">
-              {{title}}</button>
-  
-              <ng-container  *ngIf="action === 'singIn'; else templateSignIn">
-                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Don’t have an account yet? <a routerLink="/signup"
-                    class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
-                </p>
-  
-              </ng-container>
-  
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <ng-template #templateSignIn>
-    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-    If you already have an account, <a routerLink="/signin"
-      class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</a>
-    </p>
-  </ng-template>
+<div class="section1">
+  <div class="snow little"></div>
+  <div class="snow normal"></div>
+  <div class="snow big"></div>
+  <div class="snow giant"></div>
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log" style="background-image: url(/assets/images/brklg-modified.svg);"/>
+			          	<label for="reg-log"></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Log In</h4>
+											<div class="form-group">
+												<input type="email" name="logemail" class="form-style" [ngClass]="{'invalid': hasError('email')}" placeholder="Your Email" id="logemail" autocomplete="off">
+												<i class="input-icon uil uil-at"></i>
+                        <app-error-message [control]="form.get('email')!" />
+											</div>	
+											<div class="form-group mt-2">
+												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off" [ngClass]="{'invalid': hasError('password')}">
+												<i class="input-icon uil uil-lock-alt"></i>
+                        <app-error-message [control]="form.get('password')!" />
+											</div>
+											<a href="#" class="btn mt-4">submit</a>
+                            				<p class="mb-0 mt-4 text-center"><a routerLink="/home" class="link">I dont need account for now.</a></p>
+				      					</div>
+			      					</div>
+			      				</div>
+								<div class="card-back">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Sign Up</h4>
+											<div class="form-group">
+												<input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
+												<i class="input-icon uil uil-user"></i>
+											</div>	
+											<div class="form-group mt-2">
+												<input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off" [ngClass]="{'invalid': hasError('email')}">
+												<i class="input-icon uil uil-at"></i>
+                        <app-error-message [control]="form.get('email')!" />
+											</div>	
+											<div class="form-group mt-2">
+												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off" [ngClass]="{'invalid': hasError('password')}">
+												<i class="input-icon uil uil-lock-alt"></i>
+                        <app-error-message [control]="form.get('password')!" />
+											</div>
+											<a href="#" class="btn mt-4">submit</a>
+											<p class="mb-0 mt-4 text-center"><a routerLink="/home" class="link">I dont need account for now.</a></p>
+				      					</div>
+			      					</div>
+			      				</div>
+			      			</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+	    </div>
+	</div>

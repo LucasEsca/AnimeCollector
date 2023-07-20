@@ -16,8 +16,9 @@ import { LikedComponent } from './pages/Profile/liked/liked.component';
 import { SeeLaterComponent } from './pages/Profile/see-later/see-later.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
-import { SignInComponent } from './pages/SignIn/SignUp/sign-in/sign-in.component';
-import { SignUpComponent } from './pages/SignIn/SignUp/sign-up/sign-up.component';
+import { LoginComponent } from './pages/SignIn-SignUp/login.component';
+
+
 
 @NgModule({
   declarations: [
@@ -33,8 +34,7 @@ import { SignUpComponent } from './pages/SignIn/SignUp/sign-up/sign-up.component
     LikedComponent,
     SeeLaterComponent,
     HomeComponent,
-    SignInComponent,
-    SignUpComponent,
+    LoginComponent,
     
   ],
   imports: [
