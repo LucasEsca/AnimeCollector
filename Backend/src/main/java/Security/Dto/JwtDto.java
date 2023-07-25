@@ -15,7 +15,7 @@ public class JwtDto {
     
     //Constructor
 
-    public JwtDto(String token, String nombreUsuario, Collection<? extends GrantedAuthority> authorities) {
+    public JwtDto(String token, String userName, Collection<? extends GrantedAuthority> authorities) {
         this.token = token;
         this.userName = userName;
         this.authorities = authorities;

@@ -47,7 +47,7 @@ public class Rol {
         return rolName;
     }
 
-    public void setRolNombre(NameRol rolName) {
+    public void setRolName(NameRol rolName) {
         this.rolName = rolName;
     }
     
