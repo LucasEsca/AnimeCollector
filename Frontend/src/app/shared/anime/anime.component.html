@@ -1,0 +1,41 @@
+<div class="background">
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card shadow-2-strong" style="border-radius: 2rem;">
+                <div class="card-body p-5 text-left">
+    
+                  <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del anime</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="anime.name" required>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripcion del anime</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="anime.description" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="apellido">imagen del anime</label>
+                        <input type="file" class="form-control" id="img" name="img" [(ngModel)]="anime.img" 
+                        accept=".jpg, .jpeg, .png">
+                    </div>
+                    <br>
+                    <div class="Imagen">
+                        <img [src]="anime.img" max-width="200px">
+                    </div>
+                    <br>
+                    <button class="btn btn-success" type="submit" style="background-color:#2fac2b;">
+                        <i class="bi bi-folder-plus"></i>Editar Informacion
+                    </button>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>

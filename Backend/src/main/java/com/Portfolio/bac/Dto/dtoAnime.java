@@ -12,7 +12,7 @@ public class dtoAnime {
     private String name;
     @NotBlank
     private String description;
-    @NotBlank
+    
     private File img;
 
     

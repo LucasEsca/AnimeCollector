@@ -3,25 +3,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <tr *ngFor="let Anime of anime">
                     <div class="card-flyer">
                         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <div class="text-box">
                                 <div class="image-box">
-                                        <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt="" />
+                                        <img src={{Anime.img}} alt="" />
                                 </div>
                                 <div class="text-container">
-                                        <h6>Title 01</h6>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                </div>
+                                    <td>
+                                        <h6>{{Anime.name}}</h6>
+                                    </td>
+                                        <td>
+                                            <p>{{Anime.description}}</p>
+                                        </td>
+                                    </div>
                              </div>
                         </button>
                     </div>
+                </tr>
                 </div>
+                <tr *ngFor="let Anime of anime">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog  modal-xl">
                   <div class="modal-content" >
                     <div class="modal-header" >
-                      <h1 class="modal-title fs-5 " id="exampleModalLabel" style="color: whitesmoke;">Title 01</h1>
+                        <td>
+                      <h1 class="modal-title fs-5 " id="exampleModalLabel" style="color: whitesmoke;">{{Anime.name}}</h1>
+                        </td>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body container-fluid" style="background-color: dimgrey;">
@@ -30,56 +39,19 @@
                     <div class="modal-footer" >
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save in "See Later"</button>
                       <button type="button" class="btn btn-primary">Like</button>
+                      <td *ngIf="isLogged">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                      routerLink="/anime/{{Anime.id}}">Update</button>
+                    </td>
+                      <td *ngIf="isLogged">
+                      <button type="button" class="btn btn-primary"
+                      (click)="delete(Anime.id)">Delete</button>
+                    </td>
                     </div>
                   </div>
                 </div>
               </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="https://cdn.pixabay.com/photo/2018/04/09/19/55/low-poly-3305284_960_720.jpg" alt="" />
-                                </div>
-                                <div class="text-container">                                    
-                                    <h6>Title 02</h6>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="https://cdn.pixabay.com/photo/2018/04/06/13/46/poly-3295856_960_720.png" alt="" />
-                                </div>
-
-                                <div class="text-container">
-                                    <h6>Title 03</h6>
-                                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="https://cdn.pixabay.com/photo/2018/03/30/15/12/dog-3275593_960_720.jpg" alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <h6>Title 04</h6>
-                                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+            </tr>
             </div>
         </div>
         <nav aria-label="Page navigation example">

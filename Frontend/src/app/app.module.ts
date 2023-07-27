@@ -18,6 +18,8 @@ import { SeeLaterComponent } from './pages/Profile/see-later/see-later.component
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 import { LoginComponent } from './pages/SignIn-SignUp/login.component';
+import { FormsModule } from '@angular/forms';
+import { AnimeComponent } from './shared/anime/anime.component';
 
 
 
@@ -36,6 +38,7 @@ import { LoginComponent } from './pages/SignIn-SignUp/login.component';
     SeeLaterComponent,
     HomeComponent,
     LoginComponent,
+    AnimeComponent,
     
   ],
   imports: [
@@ -44,6 +47,7 @@ import { LoginComponent } from './pages/SignIn-SignUp/login.component';
     AuthFormComponent,
     ErrorMessageComponent,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,10 +2,10 @@ export class Anime {
     id! : number;
     name : string;
     description : string;
-    img : File;
+    img : File | null;
     
 
-    constructor(name : string, description : string, img : File) {
+    constructor(name : string, description : string, img : File | null) {
         this.name = name;
         this.description = description;
         this.img = img;

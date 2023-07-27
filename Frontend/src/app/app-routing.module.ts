@@ -6,6 +6,7 @@ import { LikedComponent } from './pages/Profile/liked/liked.component';
 import { SeeLaterComponent } from './pages/Profile/see-later/see-later.component';
 import { EditComponent } from './pages/Profile/edit/edit.component';
 import { LoginComponent } from './pages/SignIn-SignUp/login.component';
+import { AnimeComponent } from './shared/anime/anime.component';
 
 
 
@@ -14,10 +15,11 @@ import { LoginComponent } from './pages/SignIn-SignUp/login.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'error404', component: Err404Component},
+  {path: 'anime/:id', component: AnimeComponent},
   {path: 'profile', component: EditComponent},
   {path: 'liked', component: LikedComponent},
   {path: 'seelater', component: SeeLaterComponent},
+  {path: 'error404', component: Err404Component},
 
   {path: '**', redirectTo: 'error404'},
 ];

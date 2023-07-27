@@ -1,70 +1,75 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
+import { LoginService } from 'src/app/api/services/login.service';
+import { LoginUser } from 'src/app/api/model/login-user';
+import { TokenService } from 'src/app/api/services/token.service';
+import { NewUser } from 'src/app/api/model/new-user';
 
-
-  const actionType = {
-    singIn:{
-      action: 'singIn',
-      title: 'Sign In',
-    },
-    singUp: {
-      action: 'singUp',
-      title: 'Sign Up',
-    },
-  }as const;
   
-  type ActionType = keyof typeof actionType;
+ 
   
   @Component({
       selector: 'app-auth-form',
       standalone: true,
       templateUrl: './auth-form.component.html',
       styleUrls: ['./auth-form.component.css'],
-      imports: [CommonModule, RouterModule, ReactiveFormsModule, ErrorMessageComponent]
+      imports: [CommonModule, RouterModule, ReactiveFormsModule, ErrorMessageComponent, FormsModule]
   })
   export class AuthFormComponent implements OnInit {
-    @Input() action!: ActionType;
-    form!: FormGroup;
-    title!: string;
+    isLogged=false;
+    isLogginFail=false;
+    loginUser!: LoginUser;
+    userName!: string;
+    password! :string;
+    roles:string[]=[];
+    errMsj!:string;
+
+    name!: string;
+    email!: string;
   
-    user$!: Observable<any>;
   
-    
   
-    private readonly fb = inject(FormBuilder);
-    private readonly emailPattern =
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  
+    constructor(private tokenService: TokenService, private loginService: LoginService,private router: Router){}
     ngOnInit(): void {
-      this.title =
-        this.action === actionType.singIn.action
-          ? actionType.singIn.title
-          : actionType.singUp.title;
-  
-      this.initForm();
-  
-      
+      if(this.tokenService.getToken()){
+        this.isLogged = true;
+        this.isLogginFail = false;
+        this.roles = this.tokenService.getAuthorities();
+      }
     }
   
-    onSubmit(): void {
-      
-    }
-  
-    hasError(field: string): boolean {
-      const fieldName = this.form.get(field);
-      return !!fieldName?.invalid && fieldName.touched;
+    onLogin(): void{
+      this.loginUser = new LoginUser(this.userName, this.password); 
+      this.loginService.login(this.loginUser).subscribe(data =>{
+          this.isLogged = true;
+          this.isLogginFail = false;
+          this.tokenService.setToken(data.token);
+          this.tokenService.setUserName(data.nombreUsuario);
+          this.tokenService.setAuthorities(data.authorities);
+          this.roles = data.authorities;
+          this.router.navigate([''])
+        }, err =>{
+          this.isLogged = false;
+          this.isLogginFail = true;
+          this.errMsj = err.error.mensaje;
+          console.log(this.errMsj);
+          
+        })
     }
 
-  
-    private initForm(): void {
-      this.form = this.fb.group({
-        email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-        password: ['', [Validators.required, Validators.minLength(5)]],
-      });
+    onSingUp(): void{
+      const newUser = new NewUser(this.name, this.userName, this.email, this.password);
+      this.loginService.new(newUser).subscribe(
+        data =>{
+          alert("Usuario creado correctamente");
+          this.router.navigate(['']);
+        }, err =>{
+          alert("falló");
+          this.router.navigate(['']);
+        }
+      )
     }
   }
-
