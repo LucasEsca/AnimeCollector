@@ -34,18 +34,18 @@
        3px -3px 0 #060606,
        2px -2px 0 #060606,
        1px -1px 0 #060606,
-       -4px 4px 0 #3b3b3b,
-       -3px 3px 0 #3b3b3b,
-       -2px 2px 0 #3b3b3b,
-       -1px 1px 0 #3b3b3b
+       -4px 4px 0 #a70707,
+       -3px 3px 0 #a70707,
+       -2px 2px 0 #a70707,
+       -1px 1px 0 #a70707
      ;
    }
    25% {
      text-shadow:
-       -4px -4px 0 #3b3b3b,
-       -3px -3px 0 #3b3b3b,
-       -2px -2px 0 #3b3b3b,
-       -1px -1px 0 #3b3b3b,
+       -4px -4px 0 #a70707,
+       -3px -3px 0 #a70707,
+       -2px -2px 0 #a70707,
+       -1px -1px 0 #a70707,
        4px 4px 0 #060606,
        3px 3px 0 #060606,
        2px 2px 0 #060606,
@@ -58,18 +58,18 @@
        -3px 3px 0 #060606,
        -2px 2px 0 #060606,
        -1px 1px 0 #060606,
-       4px -4px 0 #3b3b3b,
-       3px -3px 0 #3b3b3b,
-       2px -2px 0 #3b3b3b,
-       1px -1px 0 #3b3b3b
+       4px -4px 0 #a70707,
+       3px -3px 0 #a70707,
+       2px -2px 0 #a70707,
+       1px -1px 0 #a70707
      ;
    }
    75% {
      text-shadow:
-       4px 4px 0 #3b3b3b,
-       3px 3px 0 #3b3b3b,
-       2px 2px 0 #3b3b3b,
-       1px 1px 0 #3b3b3b,
+       4px 4px 0 #a70707,
+       3px 3px 0 #a70707,
+       2px 2px 0 #a70707,
+       1px 1px 0 #a70707,
        -4px -4px 0 #060606,
        -3px -3px 0 #060606,
        -2px -2px 0 #060606,
@@ -82,10 +82,10 @@
        3px -3px 0 #060606,
        2px -2px 0 #060606,
        1px -1px 0 #060606,
-       -4px 4px 0 #3b3b3b,
-       -3px 3px 0 #3b3b3b,
-       -2px 2px 0 #3b3b3b,
-       -1px 1px 0 #3b3b3b
+       -4px 4px 0 #a70707,
+       -3px 3px 0 #a70707,
+       -2px 2px 0 #a70707,
+       -1px 1px 0 #a70707
      ;
    }
  }

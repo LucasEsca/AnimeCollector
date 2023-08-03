@@ -26,12 +26,7 @@ onLogOut():void{
   window.location.reload();
 }
 
-login(){
+enter(){
   this.router.navigate(['/login'])
 }
-
-register(){
-  this.router.navigate(['/login'])
-}
-
 }

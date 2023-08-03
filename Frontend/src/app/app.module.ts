@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,8 +20,14 @@ import { SeeLaterComponent } from './pages/Profile/see-later/see-later.component
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 import { LoginComponent } from './pages/SignIn-SignUp/login.component';
-import { FormsModule } from '@angular/forms';
-import { AnimeComponent } from './shared/anime/anime.component';
+import { InterceptorService } from './api/services/interceptor.service';
+
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { EditAnimeComponent } from './shared/edit-anime/edit-anime.component';
+import { CreateAnimeComponent } from './shared/create-anime/create-anime.component';
 
 
 
@@ -38,7 +46,10 @@ import { AnimeComponent } from './shared/anime/anime.component';
     SeeLaterComponent,
     HomeComponent,
     LoginComponent,
-    AnimeComponent,
+    EditAnimeComponent,
+    InfoAnimeComponent,
+    CreateAnimeComponent,
+    
     
   ],
   imports: [
@@ -48,8 +59,14 @@ import { AnimeComponent } from './shared/anime/anime.component';
     ErrorMessageComponent,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
   ],
-  providers: [],
+  providers: [
+    InterceptorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

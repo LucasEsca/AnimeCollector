@@ -8,28 +8,32 @@
     
                   <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
                     <div class="form-group">
-                        <label for="nombre">Nombre del anime</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="anime.name" required>
-                    </div>
-                    <br>
-
-                    <div class="form-group">
-                        <label for="descripcion">Descripcion del anime</label>
-                        <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="anime.description" required>
+                        <label for="name" style="color: whitesmoke;" >Anime Name</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="anime.name">
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="apellido">imagen del anime</label>
-                        <input type="file" class="form-control" id="img" name="img" [(ngModel)]="anime.img" 
+                        <label for="description" style="color: whitesmoke;">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" [(ngModel)]="anime.description">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="url" style="color: whitesmoke;">Trailer Url</label>
+                        <input type="text" class="form-control" id="url" name="url" [(ngModel)]="anime.url">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="img" style="color: whitesmoke;">Image</label>
+                        <input type="file" class="form-control" id="img" name="img" [(ngModel)]="anime.img" (change)="uploadImage($event)" 
                         accept=".jpg, .jpeg, .png">
                     </div>
                     <br>
                     <div class="Imagen">
-                        <img [src]="anime.img" max-width="200px">
+                        <img [src]="imageService.url" max-width="200px">
                     </div>
                     <br>
                     <button class="btn btn-success" type="submit" style="background-color:#2fac2b;">
-                        <i class="bi bi-folder-plus"></i>Editar Informacion
+                        <i class="bi bi-folder-plus"></i>Update
                     </button>
                 </form>
                 </div>
@@ -39,3 +43,4 @@
         </div>
       </section>
     </div>
+

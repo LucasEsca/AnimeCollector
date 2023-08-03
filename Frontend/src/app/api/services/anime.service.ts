@@ -2,15 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Anime } from '../model/anime';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnimeService {
-  animeURL = 'http://localhost:8080/anime/'
+
+  animeURL = environment.URL +'anime/'
 
   constructor(private httpClient: HttpClient) { }
-
+  
   public lista(): Observable<Anime[]>{
     return this.httpClient.get<Anime[]>(this.animeURL + 'list');
   }

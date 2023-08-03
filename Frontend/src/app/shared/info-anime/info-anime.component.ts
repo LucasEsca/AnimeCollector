@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Anime } from 'src/app/api/model/anime';
 import { AnimeService } from 'src/app/api/services/anime.service';
 import { TokenService } from 'src/app/api/services/token.service';
@@ -8,35 +8,42 @@ import { TokenService } from 'src/app/api/services/token.service';
   templateUrl: './info-anime.component.html',
   styleUrls: ['./info-anime.component.css']
 })
-export class InfoAnimeComponent {
-
+export class InfoAnimeComponent implements OnInit{
   anime : Anime [] = [];
+  
 
-  constructor(private aService: AnimeService, private tokenService: TokenService) { }
+  constructor(private sAnime: AnimeService, 
+    private tokenService: TokenService,
+    ) { }
+
 
   isLogged = false;
 
   ngOnInit(): void {
-    
-    this.cargarProyecto();
-    if (this.tokenService.getToken()) {
+    this.cargarAnime();
+    if(this.tokenService.getToken()){
       this.isLogged = true;
     } else {
       this.isLogged = false;
     }
   }
 
-  cargarProyecto(): void {
-    this.aService.lista().subscribe(data => { this.anime = data; })
+  cargarAnime(): void{
+    this.sAnime.lista().subscribe(
+      data =>{
+        this.anime = data;
+      }
+    )
   }
+
 
   delete(id?: number){
     if(id != undefined){
-      this.aService.delete(id).subscribe(
+      this.sAnime.delete(id).subscribe(
         data => {
-          this.cargarProyecto();
+          this.cargarAnime();
         }, err => {
-          alert("No se pudo borrar el proyecto");
+          alert("No se pudo borrar el anime");
         })
       }
     }

@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class CAnime {
     
-        @Autowired
+    @Autowired
     SAnime sAnime;
     
     @GetMapping("/list")
@@ -37,13 +37,18 @@ public class CAnime {
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
-    @GetMapping("/detail/{id}")
-    public ResponseEntity<Anime> getById(@PathVariable("id") int id){
-        if(!sAnime.existsById(id))
-            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+@GetMapping("/detail/{id}")
+public ResponseEntity<?> getById(@PathVariable("id") int id) {
+    try {
+        if (!sAnime.existsById(id)) {
+            return new ResponseEntity<>(new Mensaje("No existe el anime con ID " + id), HttpStatus.NOT_FOUND);
+        }
         Anime anime = sAnime.getOne(id).get();
-        return new ResponseEntity(anime, HttpStatus.OK);
+        return new ResponseEntity<>(anime, HttpStatus.OK);
+    } catch (Exception e) {
+        return new ResponseEntity<>(new Mensaje("Error al obtener el anime"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+}
     
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
@@ -63,7 +68,7 @@ public class CAnime {
             return new ResponseEntity(new Mensaje("Ese anime ya existe"), HttpStatus.BAD_REQUEST);
         
         Anime anime = new Anime(dtoanime.getName(), 
-                dtoanime.getDescription(), dtoanime.getImg());
+                dtoanime.getDescription(), dtoanime.getUrl(), dtoanime.getImg());
         sAnime.save(anime);
         
         return new ResponseEntity(new Mensaje("Anime agregada"), HttpStatus.OK);
@@ -85,6 +90,7 @@ public class CAnime {
         Anime anime = sAnime.getOne(id).get();
         anime.setName(dtoanime.getName());
         anime.setDescription((dtoanime.getDescription()));
+        anime.setUrl(dtoanime.getUrl());
         anime.setImg(dtoanime.getImg());
         
         sAnime.save(anime);

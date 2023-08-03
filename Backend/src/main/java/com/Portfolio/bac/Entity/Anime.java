@@ -8,26 +8,33 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.io.File;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Anime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String description;
-    private File img;
     
+    @NotNull
+    private String name;
+    
+    @NotNull
+    private String description;
+    
+    @NotNull
+    private String url;
+    
+    private String img;
     
     public Anime() {
-}
+    }
 
-    public Anime(String name, String description, File img) {
+    public Anime(String name, String description, String url, String img) {
         this.name = name;
         this.description = description;
+        this.url = url;
         this.img = img;
-        
     }
 
     public int getId() {
@@ -54,12 +61,20 @@ public class Anime {
         this.description = description;
     }
 
-    public File getImg() {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getImg() {
         return img;
     }
 
-    public void setImg(File img) {
+    public void setImg(String img) {
         this.img = img;
     }
-
+    
 }

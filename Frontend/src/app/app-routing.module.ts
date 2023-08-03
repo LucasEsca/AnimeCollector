@@ -6,7 +6,9 @@ import { LikedComponent } from './pages/Profile/liked/liked.component';
 import { SeeLaterComponent } from './pages/Profile/see-later/see-later.component';
 import { EditComponent } from './pages/Profile/edit/edit.component';
 import { LoginComponent } from './pages/SignIn-SignUp/login.component';
-import { AnimeComponent } from './shared/anime/anime.component';
+import { InfoAnimeComponent } from './shared/info-anime/info-anime.component';
+import { EditAnimeComponent } from './shared/edit-anime/edit-anime.component';
+import { CreateAnimeComponent } from './shared/create-anime/create-anime.component';
 
 
 
@@ -15,7 +17,9 @@ import { AnimeComponent } from './shared/anime/anime.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'anime/:id', component: AnimeComponent},
+  {path: 'infoAnime/:id', component: InfoAnimeComponent},
+  {path: 'editAnime/:id', component: EditAnimeComponent},
+  {path: 'createAnime', component: CreateAnimeComponent},
   {path: 'profile', component: EditComponent},
   {path: 'liked', component: LikedComponent},
   {path: 'seelater', component: SeeLaterComponent},

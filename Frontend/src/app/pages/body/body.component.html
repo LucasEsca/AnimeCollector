@@ -1,57 +1,26 @@
       <!-- Topic Cards -->
-      <div id="cards_landscape_wrap-2">
+      <div id="cards_landscape_wrap-2" >
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                    <tr *ngFor="let Anime of anime">
-                    <div class="card-flyer">
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <div class="text-box">
-                                <div class="image-box">
-                                        <img src={{Anime.img}} alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <td>
-                                        <h6>{{Anime.name}}</h6>
-                                    </td>
-                                        <td>
-                                            <p>{{Anime.description}}</p>
-                                        </td>
-                                    </div>
-                             </div>
-                        </button>
-                    </div>
-                </tr>
+              <tr *ngFor="let Anime of anime">
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                      <div class="card-flyer" routerLink="/infoAnime/{{Anime.id}}">
+                              <div class="text-box">
+                                  <div class="image-box">
+                                          <img src={{Anime.img}} alt="" />
+                                  </div>
+                                  <div class="text-container">
+                                      <td>
+                                          <h6>{{Anime.name}}</h6>
+                                      </td>
+                                          <td>
+                                              <p>{{Anime.description}}</p>
+                                          </td>
+                                      </div>
+                               </div>
+                      </div>
                 </div>
-                <tr *ngFor="let Anime of anime">
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog  modal-xl">
-                  <div class="modal-content" >
-                    <div class="modal-header" >
-                        <td>
-                      <h1 class="modal-title fs-5 " id="exampleModalLabel" style="color: whitesmoke;">{{Anime.name}}</h1>
-                        </td>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body container-fluid" style="background-color: dimgrey;">
-                        <app-info-anime></app-info-anime>
-                    </div>
-                    <div class="modal-footer" >
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save in "See Later"</button>
-                      <button type="button" class="btn btn-primary">Like</button>
-                      <td *ngIf="isLogged">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                      routerLink="/anime/{{Anime.id}}">Update</button>
-                    </td>
-                      <td *ngIf="isLogged">
-                      <button type="button" class="btn btn-primary"
-                      (click)="delete(Anime.id)">Delete</button>
-                    </td>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </tr>
+              </tr>
             </div>
         </div>
         <nav aria-label="Page navigation example">

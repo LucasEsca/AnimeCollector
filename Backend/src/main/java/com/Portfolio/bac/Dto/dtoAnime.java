@@ -5,25 +5,22 @@
 package com.Portfolio.bac.Dto;
 
 import jakarta.validation.constraints.NotBlank;
-import java.io.File;
 
 public class dtoAnime {
     @NotBlank
     private String name;
     @NotBlank
     private String description;
-    
-    private File img;
+    @NotBlank
+    private String url;
+    @NotBlank
+    private String img;
 
-    
-    public dtoAnime() {
-    }
-
-    public dtoAnime(String name, String description, File img) {
+    public dtoAnime(String name, String description, String url, String img) {
         this.name = name;
         this.description = description;
+        this.url = url;
         this.img = img;
-       
     }
 
     public String getName() {
@@ -42,12 +39,21 @@ public class dtoAnime {
         this.description = description;
     }
 
-    public File getImg() {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getImg() {
         return img;
     }
 
-    public void setImgP(File img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
+    
 }

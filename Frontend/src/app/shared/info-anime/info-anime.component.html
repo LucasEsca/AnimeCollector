@@ -1,16 +1,45 @@
-<tr *ngFor="let Anime of anime">
-    <div class="Info-Anime">
-    <div class="image-box" >
-        <img src={{Anime.img}} class="img-fluid rounded float-start"
-        style="height: 15em;" />
-</div>
-<div class="text-box" >
-    <h5 style="color: whitesmoke;">Descripcion:</h5>
-    <td>
-        <p style="color: whitesmoke;">{{Anime.description}}</p>
-    </td>
-
-</div>
-</div>
+<app-nav-bar />
+<br>
+<div class="container">
+    <tr *ngFor="let Anime of anime">
+    <div class="row">
+        
+            <div class="col-6">
+                <h1>{{Anime.name}}</h1>
+                <img src={{Anime.img}} max-width="75%">
+            </div>
+        
+        <div class="col-4">
+            <h3>Description:</h3>
+            
+                <p>{{Anime.description}}</p>
+            
+            <ul class="sci">
+                <li>
+                  <a ><i class="fa-regular fa-thumbs-up"></i></a>
+                </li>
+                <li>
+                  <a ><i class="fa-regular fa-clock"></i></a>
+                </li>
+            </ul>
+            <div class="actions">
+                <button type="button" class="" style="margin: 1%;" routerLink="/editAnime/{{Anime.id}}"
+                >Update</button>
+                <button type="button" class="" style="margin: 1%; background-color: #a70707;"
+                (click)="delete(Anime.id)">Delete</button>
+            </div>
+        </div>
+        <div class="g-start-2" style="grid-row: 2">
+            <h3>Trailer:</h3>
+                        <div class="ratio ratio-16x9">
+                <iframe src='{{Anime.url}}' title="YouTube video" allowfullscreen></iframe>
+              </div>
+            
+              <br>
+        </div>
+    
+    </div>
 </tr>
-
+  </div>
+  <br>
+  <app-footer />
