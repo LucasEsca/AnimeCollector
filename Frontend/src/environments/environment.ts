@@ -1,4 +1,5 @@
 export const environment = {
+  production: false,
   firebase: {
     projectId: 'animecollector-7830d',
     appId: '1:844287362113:web:93a6a540f09684282072c0',
@@ -9,6 +10,5 @@ export const environment = {
     messagingSenderId: '844287362113',
     measurementId: 'G-7TWYFVGY3C',
   },
-  production: false,
     URL: 'http://localhost:8080/',
 };

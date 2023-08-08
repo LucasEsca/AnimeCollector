@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Anime } from 'src/app/api/model/anime';
 import { TokenService } from 'src/app/api/services/token.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { TokenService } from 'src/app/api/services/token.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-
+  filterpost = '';
+  posts = Anime;
   isLogged= false;
 
   constructor(private router: Router, private tokenService: TokenService) {}

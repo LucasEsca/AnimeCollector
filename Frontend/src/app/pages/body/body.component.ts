@@ -9,6 +9,7 @@ import { TokenService } from 'src/app/api/services/token.service';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit{
+  public page!:number;
   anime : Anime [] = [];
   
 

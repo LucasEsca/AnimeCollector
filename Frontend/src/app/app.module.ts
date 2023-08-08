@@ -28,6 +28,8 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { EditAnimeComponent } from './shared/edit-anime/edit-anime.component';
 import { CreateAnimeComponent } from './shared/create-anime/create-anime.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
@@ -49,6 +51,7 @@ import { CreateAnimeComponent } from './shared/create-anime/create-anime.compone
     EditAnimeComponent,
     InfoAnimeComponent,
     CreateAnimeComponent,
+    FilterPipe,
     
     
   ],
@@ -60,6 +63,7 @@ import { CreateAnimeComponent } from './shared/create-anime/create-anime.compone
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),

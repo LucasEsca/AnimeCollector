@@ -1,3 +1,4 @@
+import { Binary } from "@angular/compiler";
 export class Anime {
     
   id?: number;

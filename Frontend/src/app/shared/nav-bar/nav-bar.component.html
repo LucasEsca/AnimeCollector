@@ -5,8 +5,8 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="padding-left: 2%;">
+      <li class="nav-item" >
         <button class="nav-link" routerLink="">Home</button>
       </li>
       <li class="nav-item">
@@ -16,10 +16,10 @@
         <button class="nav-link" (click)="onLogOut()" *ngIf="isLogged">Log Out</button>
       </li>
       <li class="nav-item">
-        <button class="nav-link" routerLink="/createAnime">subir anime</button>
+        <button class="nav-link" routerLink="/createAnime" *ngIf="isLogged">Create Anime</button>
       </li>
       <li class="nav-item dropdown">
-        <button class="nav-link dropdown-toggle" hr="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="nav-link dropdown-toggle" hr="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="isLogged">
           Profile</button>
        <ul class="dropdown-menu dropdown-menu-dark">
           <li><a class="dropdown-item nav-link text-center" *ngIf="isLogged" routerLink="/profile">Edit Profile</a></li>
@@ -28,9 +28,12 @@
         </ul>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline my-2 my-lg-0" style="padding-right: 2%;" >
+      <input class="form-control mr-sm-2" type="text"
+      placeholder="Buscar.."
+      [(ngModel)]="filterpost"
+      name="filterpost">
+      <button class="btn btn-outline-danger my-2 my-sm-0" style="color: whitesmoke;" type="submit">Search</button>
     </form>
   </div>
 </nav>
