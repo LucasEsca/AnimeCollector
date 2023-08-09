@@ -30,6 +30,7 @@ import { EditAnimeComponent } from './shared/edit-anime/edit-anime.component';
 import { CreateAnimeComponent } from './shared/create-anime/create-anime.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
+import { ModalAnimeComponent } from './shared/modal-anime/modal-anime.component';
 
 
 
@@ -48,10 +49,10 @@ import { FilterPipe } from './pipes/filter.pipe';
     SeeLaterComponent,
     HomeComponent,
     LoginComponent,
-    EditAnimeComponent,
-    InfoAnimeComponent,
     CreateAnimeComponent,
     FilterPipe,
+    EditAnimeComponent,
+    ModalAnimeComponent,
     
     
   ],

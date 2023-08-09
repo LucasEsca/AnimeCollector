@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Anime } from 'src/app/api/model/anime';
-import { AnimeService } from 'src/app/api/services/anime.service';
-import { TokenService } from 'src/app/api/services/token.service';
+import { AnimeImages } from 'src/app/api/model/anime-images';
+import { AnimeImagesService } from 'src/app/api/services/anime-images.service';
 
 @Component({
   selector: 'app-info-anime',
@@ -9,43 +8,20 @@ import { TokenService } from 'src/app/api/services/token.service';
   styleUrls: ['./info-anime.component.css']
 })
 export class InfoAnimeComponent implements OnInit{
-  anime : Anime [] = [];
+  public animeimages!: Array<AnimeImages>;
+  public id!: number ;
   
 
-  constructor(private sAnime: AnimeService, 
-    private tokenService: TokenService,
+  constructor(
+    private _service: AnimeImagesService,
     ) { }
 
 
   isLogged = false;
 
   ngOnInit(): void {
-    this.cargarAnime();
-    if(this.tokenService.getToken()){
-      this.isLogged = true;
-    } else {
-      this.isLogged = false;
-    }
+    this.animeimages = this._service.getAnimeImages();
   }
 
-  cargarAnime(): void{
-    this.sAnime.lista().subscribe(
-      data =>{
-        this.anime = data;
-      }
-    )
-  }
-
-
-  delete(id?: number){
-    if(id != undefined){
-      this.sAnime.delete(id).subscribe(
-        data => {
-          this.cargarAnime();
-        }, err => {
-          alert("No se pudo borrar el anime");
-        })
-      }
-    }
 
 }

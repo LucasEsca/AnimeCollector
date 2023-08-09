@@ -1,0 +1,32 @@
+<div class="modal fade" id="exampleModal({img.url})" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" 
+*ngFor="let img of animeimages">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{img.name}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onCloseModal()"></button>
+        </div>
+        <div class="modal-body">
+            <div class="col-sm-9">
+                    
+                    <div class="row">
+                      <div class="col-8 col-sm-6">
+                            <img src={{img.images}} class="img-fluid"/>
+                      </div>
+                      <div class="col-4 col-sm-6 text-sm-start">
+                            <h3>Description:</h3>
+                             <p>{{img.description}}</p>
+                             <div class="col-md-6 ms-auto">
+                                    <a href={{img.url}}> Go to Trailer</a>
+                      </div>
+                    </div>
+                  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCloseModal()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="onCloseModal()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

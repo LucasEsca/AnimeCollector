@@ -17,8 +17,8 @@ import { CreateAnimeComponent } from './shared/create-anime/create-anime.compone
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'infoAnime/:id', component: InfoAnimeComponent},
-  {path: 'editAnime/:id', component: EditAnimeComponent},
+  {path: 'infoAnime', component: InfoAnimeComponent},
+  {path: 'editAnime', component: EditAnimeComponent},
   {path: 'createAnime', component: CreateAnimeComponent},
   {path: 'profile', component: EditComponent},
   {path: 'liked', component: LikedComponent},

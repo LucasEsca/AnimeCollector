@@ -1,21 +1,23 @@
 <div id="cards_landscape_wrap-2" >
                   <div class="container">
             <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" *ngFor="let Anime of anime  | paginate: {itemsPerPage: 12, currentPage: page }">
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" *ngFor="let img of animeimages  | paginate: {itemsPerPage: 12, currentPage: page }">
                       
-                      <div class="card-flyer" routerLink="/infoAnime/{{Anime.id}}">
+                      <div class="card-flyer">
                               <div class="text-box">
-                                  <div class="image-box">
-                                          <img src={{Anime.img}} alt="" />
+                                  <div class="image-box" routerLink="/infoAnime">
+                                          <img src={{img.images}} class="img-fluid" />
                                   </div>
                                   <div class="text-container">
-                                          <h6>{{Anime.name}}</h6>
-                                              <p>{{Anime.description}}</p>
+                                          <h6>{{img.name}}</h6>
+                                              <p class="text-truncate">{{img.description}}</p>
+                                                <a href={{img.url}} style="color: whitesmoke;">See Trailer</a>
                                       </div>
+
                                </div>
                       </div>
                 </div>
             </div>
-      </div>
+                <br>
       <pagination-controls (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
     </div>

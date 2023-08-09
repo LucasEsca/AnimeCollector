@@ -1,3 +1,4 @@
+<app-nav-bar></app-nav-bar>
 <body>
         <div class="area" >
           <ul class="circles">
@@ -17,7 +18,7 @@
  
             <div class="content">
               <div class="detail">
-                <div class="box-list">
+                <div class="box-list" >
                         <ul class="list-group list-group-flush">
                                 <div class="list-title">
                                         <h1 class="animated-shadow" style="color: whitesmoke; padding: 1em;">Liked Animes</h1>
@@ -25,13 +26,10 @@
                                 <div class="list-title">
                                         <h3 style="color: whitesmoke; padding: 1em;">Count of Liked Animes:</h3>
                                 </div>
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                                <li class="list-group-item">A fourth item</li>
-                                <li class="list-group-item">And a fifth one</li>
+                                <li class="list-group-item" *ngFor="let img of animeimages  | paginate: {itemsPerPage: 5, currentPage: page }">{{img.name}}</li>
                               </ul>
-                              
+                              <br>
+      <pagination-controls (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
                 </div>
                 <ul class="sci" style="padding: 1em;">
                   <li>
@@ -48,3 +46,4 @@
             </div>
           </div>
         </body>
+        <app-footer></app-footer>
