@@ -1,4 +1,3 @@
-
 FROM openjdk:17-alpine
 MAINTAINER FLI
 VOLUME /tmp

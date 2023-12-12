@@ -32,7 +32,10 @@ import { NewUser } from 'src/app/api/model/new-user';
   
   
   
-    constructor(private tokenService: TokenService, private loginService: LoginService,private router: Router){}
+    constructor(
+      private tokenService: TokenService, 
+      private loginService: LoginService,
+      private router: Router){}
     ngOnInit(): void {
       if(this.tokenService.getToken()){
         this.isLogged = true;

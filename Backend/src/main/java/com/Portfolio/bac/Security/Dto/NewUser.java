@@ -9,8 +9,8 @@ import java.util.Set;
 
 public class NewUser {
     private String name;
-    private String userName;
     private String email;
+    private String userName;
     private String password;
     private Set<String> roles = new HashSet<>();
 

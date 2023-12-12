@@ -23,10 +23,10 @@ public class User {
     @NotNull
     private String name;
     @NotNull
+    private String email;
+    @NotNull
     @Column(unique = true)
     private String userName;
-    @NotNull
-    private String email;
     @NotNull
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
