@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../db/connections';
 
-export const Product = sequelize.define('product', {
+export const Anime = sequelize.define('anime', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,5 +12,11 @@ export const Product = sequelize.define('product', {
     },
     description: {
         type: DataTypes.STRING
+    },
+    url: {
+        type: DataTypes.STRING
+    },
+    img: {
+        type: DataTypes.STRING
     }
-}, )
+});

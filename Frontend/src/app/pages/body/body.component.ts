@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Anime } from 'src/app/api/model/anime';
 import { AnimeImages } from 'src/app/api/model/anime-images';
 import { AnimeImagesService } from 'src/app/api/services/anime-images.service';
+import { AnimeService } from 'src/app/api/services/anime.service';
 
 @Component({
   selector: 'app-body',
@@ -9,25 +11,26 @@ import { AnimeImagesService } from 'src/app/api/services/anime-images.service';
 })
 export class BodyComponent implements OnInit{
   public animeimages!: Array<AnimeImages>;
+  listAnime: Anime[] = []
   public page!:number;
   
 
   constructor(
-    private _service: AnimeImagesService,
+    private _service: AnimeService,
     ) { }
 
 
   isLogged = false;
 
   ngOnInit(): void {
-    this.animeimages = this._service.getAnimeImages();
-   
+    this.getAnimes();
   }
-  data = [];
-  selectedItem = null;
 
-  setSelectedItem(item: null) {
-    this.selectedItem = item;
+  getAnimes() {
+    this._service.getAnimes().subscribe(data => {
+      this.listAnime = data;
+    })
   }
+
   
 }

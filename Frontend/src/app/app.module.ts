@@ -21,16 +21,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 import { LoginComponent } from './pages/SignIn-SignUp/login.component';
 import { InterceptorService } from './api/services/interceptor.service';
-
-
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideStorage,getStorage } from '@angular/fire/storage';
 import { EditAnimeComponent } from './shared/edit-anime/edit-anime.component';
 import { CreateAnimeComponent } from './shared/create-anime/create-anime.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ModalAnimeComponent } from './shared/modal-anime/modal-anime.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -65,9 +63,14 @@ import { ModalAnimeComponent } from './shared/modal-anime/modal-anime.component'
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 10000,
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+      }
+    ),
   ],
   providers: [
     InterceptorService

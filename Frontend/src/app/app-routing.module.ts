@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/SignIn-SignUp/login.component';
 import { InfoAnimeComponent } from './shared/info-anime/info-anime.component';
 import { EditAnimeComponent } from './shared/edit-anime/edit-anime.component';
 import { CreateAnimeComponent } from './shared/create-anime/create-anime.component';
+import { AuthGuard } from './Utils/auth.guard';
 
 
 
@@ -18,11 +19,11 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'infoAnime', component: InfoAnimeComponent},
-  {path: 'editAnime', component: EditAnimeComponent},
-  {path: 'createAnime', component: CreateAnimeComponent},
-  {path: 'profile', component: EditComponent},
-  {path: 'liked', component: LikedComponent},
-  {path: 'seelater', component: SeeLaterComponent},
+  {path: 'editAnime', component: EditAnimeComponent, canActivate: [AuthGuard]},
+  {path: 'createAnime', component: CreateAnimeComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: EditComponent, canActivate: [AuthGuard]},
+  {path: 'liked', component: LikedComponent, canActivate: [AuthGuard]},
+  {path: 'seelater', component: SeeLaterComponent, canActivate: [AuthGuard]},
   {path: 'error404', component: Err404Component},
 
   {path: '**', redirectTo: 'error404'},

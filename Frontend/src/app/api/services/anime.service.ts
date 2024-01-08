@@ -8,28 +8,15 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AnimeService {
+  private myAppUrl: string;
+  private myApiUrl: string;
 
-  animeURL = environment.URL +'anime/'
-
-  constructor(private httpClient: HttpClient) { }
-  
-  public lista(): Observable<Anime[]>{
-    return this.httpClient.get<Anime[]>(this.animeURL + 'list');
+  constructor(private http: HttpClient) {
+    this.myAppUrl = environment.endpoint;
+    this.myApiUrl = 'api/products'
   }
 
-  public detail(id: number): Observable<Anime>{
-    return this.httpClient.get<Anime>(this.animeURL + `detail/${id}`);
-  } 
-
-  public save(anime: Anime): Observable<any>{
-    return this.httpClient.post<any>(this.animeURL + 'create', anime);
-  }
-
-  public update(id: number, anime: Anime): Observable<any>{
-    return this.httpClient.put<any>(this.animeURL + `update/${id}`, anime);
-  }
-
-  public delete(id: number): Observable<any>{
-    return this.httpClient.delete<any>(this.animeURL + `delete/${id}`);
+  getAnimes(): Observable<Anime[]> {
+    return this.http.get<Anime[]>(`${this.myAppUrl}${this.myApiUrl}`)
   }
 }

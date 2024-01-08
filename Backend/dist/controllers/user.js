@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginUser = exports.newUser = void 0;
+exports.updateUserRole = exports.loginUser = exports.newUser = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_1 = require("../models/user");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
     // Validamos si el usuario ya existe en la base de datos
     const user = yield user_1.User.findOne({ where: { username: username } });
     if (user) {
@@ -27,10 +27,11 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     const hashedPassword = yield bcrypt_1.default.hash(password, 10);
     try {
-        // Guardarmos usuario en la base de datos
+        // Guardamos usuario en la base de datos
         yield user_1.User.create({
             username: username,
-            password: hashedPassword
+            password: hashedPassword,
+            role: role || 'user' // Si no se proporciona, el rol predeterminado es 'user'
         });
         res.json({
             msg: `Usuario ${username} creado exitosamente!`
@@ -38,7 +39,7 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     catch (error) {
         res.status(400).json({
-            msg: 'Upps ocurrio un error',
+            msg: 'Upps ocurrió un error',
             error
         });
     }
@@ -62,8 +63,25 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     // Generamos token
     const token = jsonwebtoken_1.default.sign({
-        username: username
-    }, process.env.SECRET_KEY || 'pepito123');
+        username: username,
+        role: user.role // Agrega el rol del usuario al token
+    }, process.env.SECRET_KEY || 'lucas1234');
     res.json(token);
 });
 exports.loginUser = loginUser;
+const updateUserRole = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.params.id;
+    const { role } = req.body;
+    try {
+        const updatedUser = yield user_1.User.update({ role }, { where: { id: userId } });
+        res.json(updatedUser);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({
+            msg: 'Error al actualizar el rol del usuario',
+            error,
+        });
+    }
+});
+exports.updateUserRole = updateUserRole;

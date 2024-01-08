@@ -7,21 +7,28 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const validateToken = (req, res, next) => {
     const headerToken = req.headers['authorization'];
     if (headerToken != undefined && headerToken.startsWith('Bearer ')) {
-        // Tiene token
         try {
             const bearerToken = headerToken.slice(7);
-            jsonwebtoken_1.default.verify(bearerToken, process.env.SECRET_KEY || 'pepito123');
-            next();
+            const decodedToken = jsonwebtoken_1.default.verify(bearerToken, process.env.SECRET_KEY || 'lucas1234');
+            // Verificar si el usuario tiene el rol de administrador
+            if (decodedToken.role === 'admin') {
+                next();
+            }
+            else {
+                return res.status(403).json({
+                    msg: 'Acceso denegado. Permiso insuficiente.'
+                });
+            }
         }
         catch (error) {
             res.status(401).json({
-                msg: 'token no valido'
+                msg: 'Token no válido'
             });
         }
     }
     else {
         res.status(401).json({
-            msg: 'Acceso denegado'
+            msg: 'Acceso denegado. Token no proporcionado.'
         });
     }
 };
