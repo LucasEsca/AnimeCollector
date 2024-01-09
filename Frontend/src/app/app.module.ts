@@ -6,29 +6,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './pages/header/header.component';
-import { FooterComponent } from './pages/footer/footer.component';
-import { BodyComponent } from './pages/body/body.component';
-import { AuthFormComponent } from './shared/auth-form/auth-form.component';
-import { InfoAnimeComponent } from './shared/info-anime/info-anime.component';
-import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
-import { Err404Component } from './pages/err404/err404.component';
-import { LogoComponent } from './shared/logo/logo.component';
-import { EditComponent } from './pages/Profile/edit/edit.component';
-import { LikedComponent } from './pages/Profile/liked/liked.component';
-import { SeeLaterComponent } from './pages/Profile/see-later/see-later.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ErrorMessageComponent } from './shared/error-message/error-message.component';
-import { LoginComponent } from './pages/SignIn-SignUp/login.component';
-import { InterceptorService } from './api/services/interceptor.service';
-import { EditAnimeComponent } from './shared/edit-anime/edit-anime.component';
-import { CreateAnimeComponent } from './shared/create-anime/create-anime.component';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { FilterPipe } from './pipes/filter.pipe';
-import { ModalAnimeComponent } from './shared/modal-anime/modal-anime.component';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipe } from './data/pipes/filter.pipe';
+import { AuthFormComponent } from './presentation/Components/auth-form/auth-form.component';
+import { CreateAnimeComponent } from './presentation/Components/create-anime/create-anime.component';
+import { EditAnimeComponent } from './presentation/Components/edit-anime/edit-anime.component';
+import { InfoAnimeComponent } from './presentation/Components/info-anime/info-anime.component';
+import { EditComponent } from './presentation/pages/Profile/edit/edit.component';
+import { LikedComponent } from './presentation/pages/Profile/liked/liked.component';
+import { SeeLaterComponent } from './presentation/pages/Profile/see-later/see-later.component';
+import { BodyComponent } from './presentation/pages/body/body.component';
+import { Err404Component } from './presentation/pages/err404/err404.component';
+import { FooterComponent } from './presentation/pages/footer/footer.component';
+import { HeaderComponent } from './presentation/pages/header/header.component';
+import { HomeComponent } from './presentation/pages/home/home.component';
+import { ErrorMessageComponent } from './presentation/shared/error-message/error-message.component';
+import { LoginComponent } from './presentation/pages/SignIn-SignUp/login.component';
+import { LogoComponent } from './presentation/shared/logo/logo.component';
+import { NavBarComponent } from './presentation/Components/nav-bar/nav-bar.component';
 
 
 
@@ -39,18 +36,14 @@ import { ToastrModule } from 'ngx-toastr';
     FooterComponent,
     BodyComponent,
     InfoAnimeComponent,
-    NavBarComponent,
     Err404Component,
-    LogoComponent,
     EditComponent,
     LikedComponent,
     SeeLaterComponent,
     HomeComponent,
-    LoginComponent,
     CreateAnimeComponent,
     FilterPipe,
     EditAnimeComponent,
-    ModalAnimeComponent,
     
     
   ],
@@ -64,6 +57,10 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
+    LoginComponent,
+    LogoComponent,
+    NavBarComponent,
+    
     ToastrModule.forRoot(
       {
         timeOut: 10000,
@@ -73,7 +70,6 @@ import { ToastrModule } from 'ngx-toastr';
     ),
   ],
   providers: [
-    InterceptorService
   ],
   bootstrap: [AppComponent]
 })

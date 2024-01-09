@@ -20,5 +20,7 @@ export const User = sequelize.define('user', {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: 'user' // Por defecto, un nuevo usuario tiene el rol 'user'
-    }
-}, )
+    }},{
+        createdAt: false,
+        updatedAt: false
+    })

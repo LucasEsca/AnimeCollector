@@ -5,94 +5,88 @@ export const createAnime = async (req: Request, res: Response) => {
     const { name, description, url, img } = req.body;
 
     try {
-        const newAnime = await Anime.create({
-            name,
-            description,
-            url,
-            img,
+        await Anime.create({
+            name: name,
+            description: description,
+            url: url,
+            img: img
         });
 
-        res.json(newAnime);
+        res.json({
+            msg: `El anime fue agregado con exito!`
+        })
     } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            msg: 'Error al crear el anime',
-            error,
-        });
+        console.log(error);
+        res.json({
+            msg: `Upps ocurrio un error, comuniquese con soporte`
+        })
     }
 };
 
 export const updateAnime = async (req: Request, res: Response) => {
-    const animeId = req.params.id;
+    const { name, description, url, img } = req.body;
+    const { id } = req.params;
 
     try {
-        const existingAnime = await Anime.findByPk(animeId);
 
-        if (!existingAnime) {
-            return res.status(404).json({
-                msg: 'Anime no encontrado',
-            });
-        }
+        const anime = await Anime.findByPk(id);
 
-        // Guardar los cambios
-        await existingAnime.save();
-
-        res.json(existingAnime);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            msg: 'Error al actualizar el anime',
-            error,
+    if(anime) {
+        await anime.update({
+            name: name,
+            description: description,
+            url: url,
+            img: img
         });
+        res.json({
+            msg: 'El anime fue actualziado con exito'
+        })
+
+    } else {
+        res.status(404).json({
+            msg: `No existe un anime con el id ${id}`
+        })
     }
+        
+    } catch (error) {
+        console.log(error);
+        res.json({
+            msg: `Upps ocurrio un error, comuniquese con soporte`
+        })
+    }
+};
+
+export const getAnimes = async (req: Request, res: Response) => {
+    const listAnimes = await Anime.findAll()
+
+    res.json(listAnimes)
 };
 
 export const getAnime = async (req: Request, res: Response) => {
-    try {
-        const animeList = await Anime.findAll();
-        res.json(animeList);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            msg: 'Error al obtener la lista de animes',
-            error,
-        });
-    }
-};
+    const { id } = req.params;
+    const anime = await Anime.findByPk(id);
 
-export const getAnimeById = async (req: Request, res: Response) => {
-    const animeId = req.params.id;
-
-    try {
-        const anime = await Anime.findByPk(animeId);
-
-        if (!anime) {
-            return res.status(404).json({
-                msg: 'Anime no encontrado',
-            });
-        }
-
-        res.json(anime);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            msg: 'Error al obtener los detalles del anime',
-            error,
-        });
+    if (anime) {
+        res.json(anime)
+    } else {
+        res.status(404).json({
+            msg: `No existe un anime con el id ${id}`
+        })
     }
 };
 
 export const deleteAnime = async (req: Request, res: Response) => {
-    const animeId = req.params.id;
+    const { id } = req.params;
+    const anime = await Anime.findByPk(id);
 
-    try {
-        await Anime.destroy({ where: { id: animeId } });
-        res.json({ msg: 'Anime eliminado correctamente' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            msg: 'Error al eliminar el anime',
-            error,
-        });
+    if (!anime) {
+        res.status(404).json({
+            msg: `No existe un anime con el id ${id}`
+        })
+    } else {
+        await anime.destroy();
+        res.json({
+            msg: 'El anime fue eliminado con exito!'
+        })
     }
 };

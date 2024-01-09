@@ -8,15 +8,23 @@ export const Anime = sequelize.define('anime', {
         autoIncrement: true
     },
     name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
     },
     description: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     url: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     img: {
-        type: DataTypes.STRING
-    }
-});
+        type: DataTypes.STRING,
+        allowNull: false
+    },},
+    {
+        createdAt: false,
+        updatedAt: false
+    });

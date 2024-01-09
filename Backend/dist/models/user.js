@@ -26,4 +26,7 @@ exports.User = connections_1.default.define('user', {
         allowNull: false,
         defaultValue: 'user' // Por defecto, un nuevo usuario tiene el rol 'user'
     }
+}, {
+    createdAt: false,
+    updatedAt: false
 });

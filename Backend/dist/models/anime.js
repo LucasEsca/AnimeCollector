@@ -13,15 +13,23 @@ exports.Anime = connections_1.default.define('anime', {
         autoIncrement: true
     },
     name: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
+        unique: true,
+        allowNull: false
     },
     description: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
     },
     url: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
     },
     img: {
-        type: sequelize_1.DataTypes.STRING
-    }
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    },
+}, {
+    createdAt: false,
+    updatedAt: false
 });
