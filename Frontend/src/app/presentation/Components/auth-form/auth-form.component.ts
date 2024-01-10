@@ -9,6 +9,7 @@ import { ErrorService } from 'src/app/data/api/services/error.service';
 import { UserService } from 'src/app/data/api/services/user.service';
 import { ErrorMessageComponent } from '../../shared/error-message/error-message.component';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
+import { TokenService } from 'src/app/data/Utils/token.service';
 
   
  
@@ -29,7 +30,9 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component';
     constructor(private toastr: ToastrService,
       private _userService: UserService,
       private router: Router,
-      private _errorService: ErrorService) { }
+      private _errorService: ErrorService,
+      private tokenService: TokenService
+      ) { }
   
     ngOnInit(): void {
     }
@@ -83,15 +86,20 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component';
       }
   
       this.loading = true;
-      this._userService.login(user).subscribe({
-        next: (token) => {
-          localStorage.setItem('token', token);
-          this.router.navigate(['/home'])
-        },
-        error: (e: HttpErrorResponse) => {
-          this._errorService.msjError(e);
-          this.loading = false
+    this._userService.login(user).subscribe({
+      next: (token) => {
+        this.tokenService.setToken(token);  // Guardamos el token
+        const userInfo = this.tokenService.getUserInfo();
+        if (userInfo) {
+          localStorage.setItem('username', userInfo.username);
+          localStorage.setItem('role', userInfo.role);
         }
-      })
-    }
+        this.router.navigate(['/home']);
+      },
+      error: (e: HttpErrorResponse) => {
+        this._errorService.msjError(e);
+        this.loading = false;
+      }
+    });
+  }
   }

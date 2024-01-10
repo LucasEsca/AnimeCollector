@@ -1,6 +1,6 @@
-export class JwtDto {
-    token!: string;
-    type!: string;
-    nombreUsuario!: string;
-    authorities!: string[];
+export interface JwtDto {
+    token: string;
+    type: string;
+    username: string;
+    authorities: string[];
 }

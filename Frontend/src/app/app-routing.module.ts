@@ -9,6 +9,7 @@ import { LikedComponent } from './presentation/pages/Profile/liked/liked.compone
 import { SeeLaterComponent } from './presentation/pages/Profile/see-later/see-later.component';
 import { LoginComponent } from './presentation/pages/SignIn-SignUp/login.component';
 import { Err404Component } from './presentation/pages/err404/err404.component';
+import { BodyComponent } from './presentation/pages/body/body.component';
 import { HomeComponent } from './presentation/pages/home/home.component';
 
 
@@ -16,14 +17,18 @@ import { HomeComponent } from './presentation/pages/home/home.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'infoAnime', component: InfoAnimeComponent},
-  {path: 'editAnime', component: EditAnimeComponent, canActivate: [AuthGuard]},
-  {path: 'createAnime', component: CreateAnimeComponent, canActivate: [AuthGuard]},
-  {path: 'profile', component: EditComponent, canActivate: [AuthGuard]},
-  {path: 'liked', component: LikedComponent, canActivate: [AuthGuard]},
-  {path: 'seelater', component: SeeLaterComponent, canActivate: [AuthGuard]},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path: '', component: HomeComponent,
+  children: [
+    {path: 'home', component: BodyComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'infoAnime', component: InfoAnimeComponent},
+    {path: 'editAnime', component: EditAnimeComponent, canActivate: [AuthGuard]},
+    {path: 'createAnime', component: CreateAnimeComponent, canActivate: [AuthGuard]},
+    {path: 'profile', component: EditComponent, canActivate: [AuthGuard]},
+    {path: 'liked', component: LikedComponent, canActivate: [AuthGuard]},
+    {path: 'seelater', component: SeeLaterComponent, canActivate: [AuthGuard]},
+  ]},
   {path: 'error404', component: Err404Component},
 
   {path: '**', redirectTo: 'error404'},

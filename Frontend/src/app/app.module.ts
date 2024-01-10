@@ -26,7 +26,7 @@ import { ErrorMessageComponent } from './presentation/shared/error-message/error
 import { LoginComponent } from './presentation/pages/SignIn-SignUp/login.component';
 import { LogoComponent } from './presentation/shared/logo/logo.component';
 import { NavBarComponent } from './presentation/Components/nav-bar/nav-bar.component';
-
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -48,6 +48,7 @@ import { NavBarComponent } from './presentation/Components/nav-bar/nav-bar.compo
     
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     AuthFormComponent,
@@ -60,7 +61,6 @@ import { NavBarComponent } from './presentation/Components/nav-bar/nav-bar.compo
     LoginComponent,
     LogoComponent,
     NavBarComponent,
-    
     ToastrModule.forRoot(
       {
         timeOut: 10000,

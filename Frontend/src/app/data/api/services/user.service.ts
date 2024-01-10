@@ -22,4 +22,8 @@ export class UserService {
    login(user: User): Observable<string> {
     return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}/login`, user)
    }
+
+   logout(): void {
+    window.sessionStorage.clear();
+  }
 }
