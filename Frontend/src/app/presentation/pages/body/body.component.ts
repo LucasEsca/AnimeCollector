@@ -9,22 +9,22 @@ import { AnimeService } from 'src/app/data/api/services/anime.service';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  listAnime: Anime[] = []
+  anime :Anime [] = [];
   loading: boolean = false;
   public page!:number;
 
-  constructor(private _service: AnimeService, private toastr: ToastrService) { }
+  constructor(private _service: AnimeService, private toastr: ToastrService) {
+   }
 
   ngOnInit(): void {
-    this.getListAnimes();
+    this._service.getListAnimes().subscribe(
+      (data) => {
+        this.anime = data;
+      },
+      (error) => {
+        console.error('Error fetching anime list:', error);
+        // Puedes manejar el error según tus necesidades
+      }
+    );
   }
-
-  getListAnimes() {
-    this.loading = true;
-
-    this._service.getListAnimes().subscribe((data: Anime[]) => {
-      this.listAnime = data;
-      this.loading = false;
-    })
-  } 
 }

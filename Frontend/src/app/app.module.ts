@@ -27,6 +27,10 @@ import { LoginComponent } from './presentation/pages/SignIn-SignUp/login.compone
 import { LogoComponent } from './presentation/shared/logo/logo.component';
 import { NavBarComponent } from './presentation/Components/nav-bar/nav-bar.component';
 import { CommonModule } from '@angular/common';
+import { CardBodyComponent } from './presentation/Components/card-body/card-body.component';
+import { InfoAnimeBodyComponent } from './presentation/pages/info-anime-body/info-anime-body.component';
+import { CreateUpdateComponent } from './presentation/Components/create-update/create-update.component';
+import { ProgressBarComponent } from './presentation/shared/progress-bar/progress-bar.component';
 
 
 @NgModule({
@@ -44,6 +48,9 @@ import { CommonModule } from '@angular/common';
     CreateAnimeComponent,
     FilterPipe,
     EditAnimeComponent,
+    CardBodyComponent,
+    InfoAnimeBodyComponent,
+    CreateUpdateComponent,
     
     
   ],
@@ -61,6 +68,7 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     LogoComponent,
     NavBarComponent,
+    ProgressBarComponent,
     ToastrModule.forRoot(
       {
         timeOut: 10000,

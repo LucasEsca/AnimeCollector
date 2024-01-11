@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimeImages } from 'src/app/data/api/interfaces/anime-images';
-import { AnimeImagesService } from 'src/app/data/api/services/anime-images.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { Anime } from 'src/app/data/api/interfaces/anime';
+import { AnimeService } from 'src/app/data/api/services/anime.service';
 
 @Component({
   selector: 'app-info-anime',
@@ -8,20 +10,37 @@ import { AnimeImagesService } from 'src/app/data/api/services/anime-images.servi
   styleUrls: ['./info-anime.component.css']
 })
 export class InfoAnimeComponent implements OnInit{
-  public animeimages!: Array<AnimeImages>;
-  public id!: number ;
+  animeId: number | undefined;
+  animeDetail: Anime | undefined;
+  safeTrailerUrl: SafeResourceUrl | undefined;
   
 
   constructor(
-    private _service: AnimeImagesService,
+    private _service: AnimeService,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
     ) { }
 
-
-  isLogged = false;
-
   ngOnInit(): void {
-    this.animeimages = this._service.getAnimeImages();
+    this.route.params.subscribe(params => {
+      this.animeId = +params['id'];
+      this.loadAnimeDetail();
+    });
   }
 
+  loadAnimeDetail() {
+    if (this.animeId) {
+      this._service.getAnime(this.animeId).subscribe(anime => {
+        this.animeDetail = anime;
+        if (this.animeDetail && this.animeDetail.url) {
+          this.safeTrailerUrl = this.generateYouTubeUrl(this.animeDetail.url);
+        }
+      });
+    }
+  }
 
+  generateYouTubeUrl(videoId: string): SafeResourceUrl {
+    const url = `https://www.youtube.com/embed/${videoId}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 }

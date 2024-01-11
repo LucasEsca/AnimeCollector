@@ -1,0 +1,43 @@
+#fotoprueba {
+    position: absolute;
+    width: 30%;
+    border-radius: 100%;
+    box-shadow: 3px 3px 6px gray;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 25px rgba(255, 255, 255, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    color: antiquewhite;
+    padding-top: 4%;
+}
+
+.card-body {
+    min-width: 100%;
+    padding: 0; /* Añadido para eliminar el relleno predeterminado del card-body */
+}
+
+form {
+    min-width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Añadido margen inferior entre los elementos del formulario */
+}
+
+label {
+    color: whitesmoke;
+}
+
+.btn {
+    background-color: #a70707;
+    border: none;
+}

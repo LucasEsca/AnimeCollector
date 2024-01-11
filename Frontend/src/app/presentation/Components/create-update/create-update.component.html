@@ -1,0 +1,46 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div class="background">
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 2rem;">
+                        <h2>{{ operacion }} Anime</h2>
+                        <div class="card-body p-5 text-left">
+                            <form [formGroup]="form" (ngSubmit)="addAnime()" novalidate>
+                                <div class="form-group">
+                                    <label for="name">Anime Name</label>
+                                    <input formControlName="name" type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input formControlName="description" type="text" class="form-control" id="description" name="description" required>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="url">Trailer Url</label>
+                                    <input formControlName="url" type="text" class="form-control" id="url" name="url">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="img">Image</label>
+                                    <input formControlName="img" type="text" class="form-control" id="img" name="img">
+                                </div>
+                                <br>
+                                <div class="Imagen">
+                                    <img max-width="200px">
+                                </div>
+                                <br>
+                                <button class="btn" type="submit">
+                                    <i class="bi bi-folder-plus"></i>{{ operacion }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

@@ -13,7 +13,7 @@ export class AnimeService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = 'api/anime'
+    this.myApiUrl = 'api/anime/'
   }
 
   getListAnimes(): Observable<Anime[]> {
