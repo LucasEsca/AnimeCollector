@@ -24,8 +24,8 @@ export class CreateAnimeComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      price: [null, Validators.required],
-      stock: [null, Validators.required],
+      url: ['', Validators.required], // Agregado para sincronizar con el formulario
+      img: ['', Validators.required] 
     })
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
   }
@@ -37,6 +37,8 @@ export class CreateAnimeComponent implements OnInit {
       this.operacion = 'Editar ';
       this.getAnime(this.id);
     }
+    const token = localStorage.getItem('AuthToken');
+console.log('Authorization Token:', token);
   }
 
   getAnime(id: number) {
@@ -59,8 +61,8 @@ export class CreateAnimeComponent implements OnInit {
     const anime: Anime = {
       name: this.form.value.name,
       description: this.form.value.description,
-      url: this.form.value.price,
-      img: this.form.value.stock
+      url: this.form.value.url,
+      img: this.form.value.img
     }
     this.loading = true;
 

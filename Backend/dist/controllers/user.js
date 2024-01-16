@@ -65,7 +65,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const token = jsonwebtoken_1.default.sign({
         username: username,
         role: user.role // Agrega el rol del usuario al token
-    }, process.env.SECRET_KEY || 'lucas1234');
+    }, process.env.SECRET_KEY || 'pepito123');
     res.json(token);
 });
 exports.loginUser = loginUser;

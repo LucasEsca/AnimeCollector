@@ -4,10 +4,12 @@ import validateToken from './validate-token';
 
 const router = Router();
 
-router.post('/', createAnime); // Crear Anime
+router.post('/',validateToken, createAnime); // Crear Anime
 router.get('/', getAnimes); // Obtener todos los Animes
 router.get('/:id', getAnime); // Obtener detalles de un Anime por ID
-router.put('/:id', updateAnime); // Actualizar Anime
+router.put('/:id',validateToken, updateAnime); // Actualizar Anime
 router.delete('/:id', deleteAnime); // Eliminar Anime
 
 export default router;
+
+//validateToken,
